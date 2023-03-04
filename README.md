@@ -1,2 +1,2 @@
 # conch
-Utilities for assisting triton kernel development
+Utilities for assisting triton kernel development.
