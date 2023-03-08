@@ -10,7 +10,7 @@ from triton.compiler import OutOfResources
 def grid_search(func,
                 warmup=100,
                 rep=100,
-                min_val_prod = 0,
+                min_val_prod=0,
                 do_print=False,
                 **meta_param_from_to):
     """
@@ -63,4 +63,14 @@ def grid_search(func,
 
         results.append((mp_vals, median_us))
 
-    return sorted(results, key = lambda elt: elt[1])
+    return sorted(results, key=lambda elt: elt[1])
+
+
+def results_to_df(results, top_n: int = 10):
+    """
+    Convert grid search results into a Pandas dataframe for displaying in Jupyter.
+    """
+    import pandas as pd
+    return pd.DataFrame({
+        **metparams, "Time (us)": rt
+    } for metparams, rt in results).head(top_n)
