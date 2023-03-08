@@ -1,1 +1,6 @@
 more-itertools
+jax
+torch
+numpy
+triton
+pandas
